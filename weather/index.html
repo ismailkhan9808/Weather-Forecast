@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.container{
+   
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    background-color: rgb(151, 235, 207);
+    padding: 100px 130px;
+    margin-left: 400px;
+    margin-right: 400px;  
+    margin-top: 40px;
+}
+p{
+    color: black;
+}
+#heading{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    margin-left: 400px;
+    font-size: 50px;
+    margin-top: 50px;
+}
+
+
+
+
+
+
+</style>
+<body>
+    
+
+
+<h1 id="heading"><b>Weather Forecast <img src="weather02-512.webp" width="90px" height="90px"></b></h1>
+   <div class="container">
+    <div class="" style="display: flex; align-items: center;">
+    <img id="condimage" src="" alt="">
+    <p style=" font-size: 20px;" id="temp">23°C</p><br>
+    </div>
+    <p>Location: Karachi ,Sindh ,Pakistan</p>
+    <p>Fahrenheit: 78.0 °F</p>
+    <p>Feelslike: 24.3 °C</p>
+    <p>Humidity: 19%</p>
+    <p>Visibilty: 8km</p>
+    <p>Wind Speed: 10.0kp/h</p>
+    
+
+
+   </div>
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+let city="Karachi";
+axios.get(`https://api.weatherapi.com/v1/current.json?key=d347dfb1a00b4f86add45435242510&q=${city}`)
+.then(function(response){
+   console.log("Response",response.data);
+   document.getElementById("condimage").src =`https:${response.data.current.condition.icon}`
+  
+} )
+.catch(function(error){
+     console.log("Error",error);
+
+}
+)
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
