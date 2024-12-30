@@ -35,9 +35,13 @@ p{
 
 </style>
 <body>
+    <label for="cityname">
+        <input type="text" id="cityname">
+    </label>
+<br>
+<button onclick="currentweather()">Weather
     
-
-
+</button>
 <h1 id="heading"><b>Weather Forecast <img src="weather02-512.webp" width="90px" height="90px"></b></h1>
    <div class="container">
     <div class="" style="display: flex; align-items: center;">
@@ -57,18 +61,21 @@ p{
  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-let city="Karachi";
-axios.get(`https://api.weatherapi.com/v1/current.json?key=d347dfb1a00b4f86add45435242510&q=${city}`)
-.then(function(response){
-   console.log("Response",response.data);
-   document.getElementById("condimage").src =`https:${response.data.current.condition.icon}`
-  
-} )
+ function currentweather(){
+     let city= document.getElementById("cityname").value;
+     axios.get(`https://api.weatherapi.com/v1/current.json?key=d347dfb1a00b4f86add45435242510&q=${city}`)
+     .then((response)=>{
+         console.log(reponse)
+         
+     })
+
+        
 .catch(function(error){
      console.log("Error",error);
+})
+      
 
-}
-)
+    }
 </script>
 
 
